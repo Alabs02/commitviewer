@@ -3,10 +3,18 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+Clone the repo
+### `git clone https://github.com/Alabs02/commitviewer.git`
 
 In the project directory, you can run:
 
+### `npm i` or `npm install`
+
+To install development dependencies
+
+Then
 ### `npm start`
+
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
