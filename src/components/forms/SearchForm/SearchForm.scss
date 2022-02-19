@@ -6,8 +6,16 @@
 
   &__container {
     width: 100%;
+    position: relative;
     margin-right: 0;
     margin-bottom: 24px;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
   }
 
   &__action {

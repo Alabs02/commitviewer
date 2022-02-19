@@ -2,6 +2,7 @@
 import "./SearchForm.scss";
 
 import { Fragment } from "react";
+import { BsSearch } from "react-icons/bs";
 
 const SearchForm = () => {
   return (
@@ -13,6 +14,7 @@ const SearchForm = () => {
             className="search-form__input"
             placeholder="Eg. facebook/react"
           />
+          <BsSearch className="search-form__icon" color="#18214d" size={16} />
         </div>
 
         <div className="search-form__action">
