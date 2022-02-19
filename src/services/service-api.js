@@ -29,11 +29,14 @@ class ServiceApi {
       : axiosClient.defaults.baseURL = "https://api.github.com"
   }
 
-  async fetch(url, resolve = true) {
+  async fetch(url, data = {}, resolve = true) {
     try {
       const response = await axiosClient.get(
         this.appendToURL(url),
-        this.setupHeaders()
+        {
+          ...this.setupHeaders(),
+          data: data
+        }
       );
 
       return resolve ? response?.data : response;
