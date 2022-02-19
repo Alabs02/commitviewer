@@ -52,7 +52,7 @@ const CommitDetails = () => {
   useEffect(() => {
     getCommits(`${owner}/${repo}`);
     forceUpdate();
-  }, [query, owner, repo]);
+  }, [query, owner, repo, forceUpdate]);
 
   return (
     <Fragment>
