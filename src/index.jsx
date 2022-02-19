@@ -1,5 +1,5 @@
 // STYLES
-import "./index.css";
+import "./index.scss";
 
 
 import { StrictMode } from "react";

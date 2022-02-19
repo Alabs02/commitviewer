@@ -1,10 +1,16 @@
 import { Route } from "react-router-dom";
 
+// PAGES
+import {
+  SearchCommit,
+  CommitDetials,
+} from "../../pages/commits";
+
 const commitRoutes = () => {
   return (
     <Route path="commits">
-      <Route path=""></Route>
-      <Route path="details/:repoId"></Route>
+      <Route path="" element={<SearchCommit />}></Route>
+      <Route path="details/:repoId" element={<CommitDetials />}></Route>
     </Route>
   );
 }
