@@ -1,0 +1,46 @@
+.app-toolbar {
+  width: 100%;
+  padding: 36px 0;
+  background: #eff2f6;
+
+  display: grid;
+  place-items: center;
+
+  &__body {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div {
+      &:last-child {
+        display: none;
+      }
+    }
+  }
+
+  &__brand {
+    font-size: 28px;
+    letter-spacing: -0.6px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .app-toolbar {
+    &__body {
+      width: 80%;
+      justify-content: space-between;
+
+      div {
+        &:last-child {
+          display: flex;
+        }
+      }
+    }
+
+    &__brand {
+      margin-right: 32px;
+    }
+  }
+}

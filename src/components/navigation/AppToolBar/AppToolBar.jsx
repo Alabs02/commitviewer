@@ -1,12 +1,20 @@
 // STYLES
 import "./AppToolBar.scss";
 
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
+import { SearchFormNav } from "../../forms";
 
 const AppToolBar = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <Fragment>
-      <div>AppToolBar</div>
+      <div className="app-toolbar">
+        <div className="app-toolbar__body">
+          <div className="app-toolbar__brand fw-bold">CommitViewer</div>
+          <SearchFormNav />
+        </div>
+      </div>
     </Fragment>
   );
 }

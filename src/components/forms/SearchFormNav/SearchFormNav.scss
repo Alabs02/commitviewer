@@ -1,0 +1,33 @@
+@use "../SearchForm/SearchForm.scss";
+
+@media only screen and (min-width: 768px) and (max-width: 1228px) {
+  .search-form {
+    width: 100% !important;
+    flex-direction: row;
+
+    &__container {
+      width: 55% !important;
+    }
+
+    &__action {
+      width: 45% !important;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .search-form {
+    width: 100% !important;
+    flex-direction: row;
+
+    &__container {
+      margin-bottom: 0;
+      margin-right: 16px;
+      width: 65%;
+    }
+
+    &__action {
+      width: 35%;
+    }
+  }
+}

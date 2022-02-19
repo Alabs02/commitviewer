@@ -1,0 +1,32 @@
+.commit-details {
+  display: grid;
+  place-items: center;
+}
+
+.main-details {
+  width: 100%;
+  padding: 32px;
+  padding-bottom: 50px;
+
+  display: grid;
+  place-items: center;
+
+  &__title {
+    font-size: 36px;
+    letter-spacing: -1.5px;
+  }
+
+  &__text {
+    font-size: 20px;
+    letter-spacing: -0.4px;
+    user-select: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main-details {
+    width: 70%;
+    padding: 0;
+    padding-bottom: 50px;
+  }
+}

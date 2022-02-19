@@ -1,0 +1,79 @@
+.commit {
+  width: 100%;
+  padding: 20px;
+
+  &__body {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__media {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #c4c4c4;
+    margin-right: 16px;
+  }
+
+  &__name {
+    font-size: 22px;
+    letter-spacing: -0.55px;
+    padding: 4px 0;
+  }
+
+  &__msg {
+    font-size: 20px;
+    letter-spacing: -0.4px;
+  }
+
+  &__copy {
+    font-size: 20px;
+    letter-spacing: -0.4px;
+    display: none;
+  }
+
+  &__action {
+    font-size: 20px;
+    letter-spacing: -0.4px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .commit {
+    &__content {
+    }
+
+    &__avatar {
+      width: 60px;
+      height: 60px;
+      margin-right: 0;
+    }
+
+    &__msg {
+      display: none;
+    }
+
+    &__copy {
+      display: block;
+    }
+
+    &__media {
+      flex-direction: column;
+      margin-right: 50px;
+    }
+  }
+}
