@@ -1,11 +1,11 @@
 // STYLES
 import "./AppToolBar.scss";
 
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { SearchFormNav } from "../../forms";
 
 const AppToolBar = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  
 
   return (
     <Fragment>

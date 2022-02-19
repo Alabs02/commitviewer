@@ -13,18 +13,28 @@ const CommitDetails = () => {
 
   const {owner, repo} = useParams();
   const [commits, setCommits] = useState([]);
+  const [repoOwner, setRepoOwner] = useState(owner);
+  const [repoName, setRepoName] = useState(repo);
   const [isLoading, setIsLoading] = useState(false);
+
+  const isEmpty = () => {
+    if (Array.isArray(commits) && commits.length > 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   const getCommits = async () => {
     setIsLoading(true);
     const response = await $api.fetch(
-      `/repos/${owner}/${repo}/commits`
+      `/repos/${repoOwner}/${repoName}/commits`
     );
 
     if (response) {
       setCommits(commits => [...commits, ...response]);
     }
-    console.log('response: ', response);
+    console.log('responsee: ', response);
 
     setTimeout(() => {
       setIsLoading(false);
@@ -39,7 +49,7 @@ const CommitDetails = () => {
 
   useEffect(() => {
     getCommits();
-  }, []);
+  }, [repoName, repoOwner]);
 
   return (
     <Fragment>
@@ -51,7 +61,7 @@ const CommitDetails = () => {
 
           {isLoading && <div className="main-details__text fw-normal text-navy">Loading...</div>}
 
-          {!isLoading &&
+          {!isLoading && !isEmpty() &&
             <div className="w-full h-full">
               {renderCommits()}
             </div>
