@@ -6,7 +6,7 @@ class ServiceApi {
   base = "";
 
   appendToURL(url) {
-    return `${this.base}${url}`;
+    return `${url}`;
   }
 
   setupHeaders(is_attached = false) {
@@ -24,9 +24,9 @@ class ServiceApi {
   }
 
   service(version) {
-    this.base = (version === 'new')
-      ? axiosClient.defaults.baseURL = ""
-      : axiosClient.defaults.baseURL = ""
+    (version === 'new')
+      ? axiosClient.defaults.baseURL = "https://api.github.com"
+      : axiosClient.defaults.baseURL = "https://api.github.com"
   }
 
   async fetch(url, resolve = true) {

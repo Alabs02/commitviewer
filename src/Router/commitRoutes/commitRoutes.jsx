@@ -8,7 +8,7 @@ import {
 
 const commitRoutes = () => {
   return (
-    <Route path="commits">
+    <Route path="/">
       <Route path="" element={<SearchCommit />}></Route>
       <Route path="details/:repoId" element={<CommitDetials />}></Route>
     </Route>
