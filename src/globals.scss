@@ -22,6 +22,10 @@ ol {
     color: #18214d;
   }
 
+  &-navy-dark {
+    color: #3e4462;
+  }
+
   &-white {
     color: #ffffff;
   }
@@ -56,5 +60,132 @@ ol {
 
   &-bolder {
     font-weight: 800;
+  }
+}
+
+button {
+  background: transparent;
+  border: none;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
+
+.w {
+  &-full {
+    width: 100%;
+  }
+
+  &-auto {
+    width: auto;
+  }
+}
+
+.h {
+  &-full {
+    height: 100%;
+  }
+
+  &-auto {
+    height: auto;
+  }
+}
+
+.btn {
+  padding: 16px 28px;
+  border-radius: 8px;
+  max-height: 58px;
+  cursor: pointer;
+  width: 100%;
+  overflow: hidden;
+
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  text-align: center;
+  user-select: none;
+
+  transition: background 0.4s ease-in-out;
+  box-shadow: 0 0 3px 1px rgba($color: #000000, $alpha: 0.2);
+
+  &-secondary {
+    background: #f3663f;
+    color: #ffffff;
+
+    &:hover,
+    &:focus {
+      background: darken($color: #f3663f, $amount: 5);
+      box-shadow: 0 0 4px 1px rgba($color: #000000, $alpha: 0.2);
+    }
+  }
+}
+
+// HELPER CLASSES
+@for $n from 1 through 100 {
+  .m {
+    &-#{$n} {
+      margin: #{$n}px !important;
+    }
+
+    &t-#{$n} {
+      margin-top: #{$n}px !important;
+    }
+
+    &b-#{$n} {
+      margin-bottom: #{$n}px !important;
+    }
+
+    &r-#{$n} {
+      margin-right: #{$n}px !important;
+    }
+
+    &l-#{$n} {
+      margin-left: #{$n}px !important;
+    }
+
+    &x-#{$n} {
+      margin-left: #{$n}px !important;
+      margin-right: #{$n}px !important;
+    }
+
+    &y-#{$n} {
+      margin-top: #{$n}px !important;
+      margin-bottom: #{$n}px !important;
+    }
+  }
+
+  .p {
+    &-#{$n} {
+      padding: #{$n}px !important;
+    }
+
+    &t-#{$n} {
+      padding-top: #{$n}px !important;
+    }
+
+    &b-#{$n} {
+      padding-bottom: #{$n}px !important;
+    }
+
+    &r-#{$n} {
+      padding-right: #{$n}px !important;
+    }
+
+    &l-#{$n} {
+      padding-left: #{$n}px !important;
+    }
+
+    &x-#{$n} {
+      padding-left: #{$n}px !important;
+      padding-right: #{$n}px !important;
+    }
+
+    &y-#{$n} {
+      padding-top: #{$n}px !important;
+      padding-bottom: #{$n}px !important;
+    }
   }
 }

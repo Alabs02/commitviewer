@@ -1,0 +1,26 @@
+.repo {
+  padding: 8px 16px;
+  background: #29335c;
+  border-radius: 8px;
+  color: #ffffff;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 16px;
+  transition: transform 0.4s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  span {
+    font-size: 16px;
+    letter-spacing: -0.4px;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+}
