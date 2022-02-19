@@ -14,13 +14,6 @@ const SearchCommit = () => {
 
   const [repos, setRespos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const isEmpty = (array) => {
-    if (Array.isArray(array) && array?.length > 0) {
-      return false;
-    } else {
-      return true;
-    }
-  }
 
   const fetchRepos = async () => {
     setIsLoading(true);

@@ -14,8 +14,6 @@ const CommitDetails = () => {
   const {owner, repo} = useParams();
   const [query, setQuery] = useState("");
   const [commits, setCommits] = useState([]);
-  const [repoOwner,] = useState(owner);
-  const [repoName,] = useState(repo);
   const [isLoading, setIsLoading] = useState(false);
   const [, updateState] = useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
