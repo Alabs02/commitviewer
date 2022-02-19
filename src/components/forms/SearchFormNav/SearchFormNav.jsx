@@ -1,26 +1,15 @@
 // STYLES
 import "./SearchFormNav.scss";
 
-import { Fragment, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Fragment } from "react";
 import { BsSearch } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
-const SearchFormNav = () => {
+const SearchFormNav = ({ query, setQuery, getCommits }) => {
   const navigate = useNavigate();
-  const [query, setQuery] = useState("");
-
-  const getCommits = () => {
-    if (query.length > 0) {
-      let strArray = query.split("/");
-
-      if (strArray.length === 2) {
-        navigate(`/details/${query}/commits`);
-      } else {
-        alert('Invlaid repository name!');
-      }
-    } else {
-      alert("Repository name is required!");
-    }
+  const fetchCommits = () => {
+    navigate(`/details/${query}/commits`);
+    getCommits(query);
   }
   return (
     <Fragment>
@@ -37,7 +26,7 @@ const SearchFormNav = () => {
         </div>
 
         <div className="search-form-nav__action">
-          <button onClick={getCommits} className="btn btn-secondary">See Commits 🚀</button>
+          <button onClick={fetchCommits} className="btn btn-secondary">See Commits 🚀</button>
         </div>
       </div>
     </Fragment>

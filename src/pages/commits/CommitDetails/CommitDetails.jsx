@@ -1,7 +1,7 @@
 // STYLES
 import "./CommitDetails.scss";
 
-import { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { AppToolBar } from "../../../components/navigation";
 import { Commit } from "../../../components/core";
 import { useParams } from "react-router-dom";
@@ -12,10 +12,14 @@ const $api = new ServiceApi();
 const CommitDetails = () => {
 
   const {owner, repo} = useParams();
+  const [query, setQuery] = useState("");
   const [commits, setCommits] = useState([]);
-  const [repoOwner, setRepoOwner] = useState(owner);
-  const [repoName, setRepoName] = useState(repo);
+  const [repoOwner,] = useState(owner);
+  const [repoName,] = useState(repo);
   const [isLoading, setIsLoading] = useState(false);
+  const [, updateState] = useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+
 
   const isEmpty = () => {
     if (Array.isArray(commits) && commits.length > 0) {
@@ -25,10 +29,10 @@ const CommitDetails = () => {
     }
   }
 
-  const getCommits = async () => {
+  const getCommits = async (url) => {
     setIsLoading(true);
     const response = await $api.fetch(
-      `/repos/${repoOwner}/${repoName}/commits`
+      `/repos/${url}/commits`
     );
 
     if (response) {
@@ -48,13 +52,14 @@ const CommitDetails = () => {
   }
 
   useEffect(() => {
-    getCommits();
-  }, [repoName, repoOwner]);
+    forceUpdate();
+    getCommits(`${owner}/${repo}`);
+  }, [query]);
 
   return (
     <Fragment>
       <div className="commit-details w-full h-full">
-        <AppToolBar />
+        <AppToolBar query={query} setQuery={setQuery} getCommits={getCommits} />
 
         <main className="main-details">
           <div className="main-details__title text-navy fw-semi-bold mb-32">{owner}/{repo}</div>
@@ -64,6 +69,11 @@ const CommitDetails = () => {
           {!isLoading && !isEmpty() &&
             <div className="w-full h-full">
               {renderCommits()}
+            </div>
+          }
+          {isEmpty && !isLoading &&
+            <div className="w-full text-navy fw-bold main-details__msg">
+              No Commits or Invalid Repository...
             </div>
           }
         </main>
