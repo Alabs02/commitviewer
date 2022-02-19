@@ -1,25 +1,50 @@
 // STYLES
 import "./SearchCommit.scss";
 
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { AppBar } from "../../../components/navigation";
 import { SearchForm } from "../../../components/forms";
 import { Repo } from "../../../components/core";
 
+import { ServiceApi } from "../../../services";
+
+const $api = new ServiceApi();
+
 const SearchCommit = () => {
 
-  const repos = [
-    'django/django',
-    'django/django',
-    'django/django',
-    'django/django',
-  ];
+  const [repos, setRespos] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const isEmpty = (array) => {
+    if (Array.isArray(array) && array?.length > 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  const fetchRepos = async () => {
+    setIsLoading(true);
+    const response = await $api
+      .fetch("/repositories");
+
+    if (response) {
+      setRespos(repos => [...repos, ...response?.splice(0, 5)]);
+    }
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }
 
   const renderRepos = () => {
     return repos.map((repo, index) => (
-      <Repo key={index} name={repo} />
+      <Repo key={index} repo={repo} />
     ));
   }
+
+  useEffect(() => {
+    fetchRepos();
+  }, []);
 
   return (
     <Fragment>
@@ -46,11 +71,14 @@ const SearchCommit = () => {
           </div>
 
           {/* TRENDING REPOS */}
-          <div className="main__repo-wrapper">
-            <div className="main__repos">
-              {renderRepos()}
+          {isLoading && <div className="fw-normal text-navy">Loading...</div>}
+          {!isLoading &&
+            <div className="main__repo-wrapper">
+              <div className="main__repos">
+                {renderRepos()}
+              </div>
             </div>
-          </div>
+          }
         </main>
       </div>
     </Fragment>

@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create();
+axiosClient.defaults.baseURL = "https://api.github.com";
 
 class ServiceApi {
   base = "";
@@ -24,9 +25,6 @@ class ServiceApi {
   }
 
   service(version) {
-    (version === 'new')
-      ? axiosClient.defaults.baseURL = "https://api.github.com"
-      : axiosClient.defaults.baseURL = "https://api.github.com"
   }
 
   async fetch(url, data = {}, resolve = true) {
