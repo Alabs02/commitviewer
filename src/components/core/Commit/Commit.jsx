@@ -5,6 +5,13 @@ import { Fragment } from "react";
 
 const Commit = ({ commit }) => {
 
+  const formatDate = (dateString) => {
+    let date = new Date(dateString);
+    let options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', time: "numeric" };
+
+    return date.toLocaleDateString("en-US", options);
+  }
+
   return (
     <Fragment>
       <div className="commit">
@@ -20,7 +27,7 @@ const Commit = ({ commit }) => {
           </div>
 
           <div className="commit__action fw-normal">
-            {commit?.commit?.committer.date}
+            {formatDate(commit?.commit?.committer.date)}
           </div>
         </div>
       </div>

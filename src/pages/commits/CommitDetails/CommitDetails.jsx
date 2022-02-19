@@ -18,7 +18,6 @@ const CommitDetails = () => {
   const [, updateState] = useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
-
   const isEmpty = () => {
     if (Array.isArray(commits) && commits.length > 0) {
       return false;
