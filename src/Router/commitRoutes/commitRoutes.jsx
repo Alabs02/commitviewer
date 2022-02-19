@@ -10,7 +10,7 @@ const commitRoutes = () => {
   return (
     <Route path="/">
       <Route path="" element={<SearchCommit />}></Route>
-      <Route path="details/:repoId" element={<CommitDetials />}></Route>
+      <Route path="details/:owner/:repo/commits" element={<CommitDetials />}></Route>
     </Route>
   );
 }

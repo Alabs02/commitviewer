@@ -3,23 +3,30 @@ import "./Commit.scss";
 
 import { Fragment } from "react";
 
-const Commit = () => {
+const Commit = ({ commit }) => {
+
+  const formatDate = (dateString) => {
+    let date = new Date(dateString);
+    console.log(date);
+    return date;
+  }
   return (
     <Fragment>
       <div className="commit">
-        <div className="commit__msg text-navy fw-normal mb-16">Log all errors to console.error by default (#21130)</div>
+        <div className="commit__msg text-navy fw-normal mb-16">{commit?.message}</div>
         <div className="commit__body">
           <div className="commit__content">
             <div className="commit__media">
               <div className="commit__avatar"></div>
-              <div className="commit__name fw-semi-bold text-navy">gaeron</div>
+              <div className="commit__name fw-semi-bold text-navy">{commit?.committer.name}</div>
             </div>
 
-            <div className="commit__copy text-navy fw-normal">Log all errors to console.error by default (#21130)</div>
+            <div className="commit__copy text-navy fw-normal">{commit?.message}</div>
           </div>
 
           <div className="commit__action fw-normal">
             23:30 28/04/2021
+            {formatDate(commit?.committer.date)}
           </div>
         </div>
       </div>
