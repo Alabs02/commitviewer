@@ -6,6 +6,8 @@ import { AppToolBar } from "../../../components/navigation";
 import { Commit } from "../../../components/core";
 import { useParams } from "react-router-dom";
 import { ServiceApi } from "../../../services";
+import { CSSTransition } from "react-transition-group";
+import "animate.css";
 
 const $api = new ServiceApi();
 
@@ -59,19 +61,46 @@ const CommitDetails = () => {
         <AppToolBar query={query} setQuery={setQuery} getCommits={getCommits} />
 
         <main className="main-details">
-          <div className="main-details__title text-navy fw-semi-bold mb-32">{owner}/{repo}</div>
+          <div className="main-details__title text-navy fw-semi-bold mb-32 mt-15">{owner}/{repo}</div>
 
-          {isLoading && <div className="main-details__text fw-normal text-navy">Loading...</div>}
+          {isLoading &&
+            <CSSTransition
+              classNames={{
+                enterActive: 'animate__animated animate__fadeIn',
+                exitActive: 'animate__animated animate__fadeOut',
+              }}
+              timeout={900}
+            >
+              <div className="main-details__text fw-normal text-navy animate__animated animate__fadeIn">Loading...</div>
+            </CSSTransition>
+          }
 
           {!isLoading && !isEmpty() &&
-            <div className="w-full h-full">
-              {renderCommits()}
-            </div>
+            <CSSTransition
+              classNames={{
+                enterActive: 'animate__animated animate__fadeIn',
+                exitActive: 'animate__animated animate__fadeOut',
+              }}
+              timeout={900}
+            >
+              <div className="w-full h-full animate__animated animate__fadeIn">
+                {renderCommits()}
+              </div>
+            </CSSTransition>
           }
-          {isEmpty && !isLoading &&
-            <div className="w-full text-navy fw-bold main-details__msg">
-              No Commits or Invalid Repository...
-            </div>
+
+          {isEmpty() && !isLoading &&
+            <CSSTransition
+              classNames={{
+                enterActive: 'animate__animated animate__fadeIn',
+                exitActive: 'animate__animated animate__fadeOut',
+              }}
+              timeout={900}
+            >
+              <div className="w-full text-navy fw-bold main-details__msg animate__animated animate__fadeIn">
+                No Commits or Invalid Repository...
+              </div>
+            </CSSTransition>
           }
         </main>
       </div>

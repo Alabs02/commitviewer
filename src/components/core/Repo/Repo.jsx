@@ -3,6 +3,8 @@ import "./Repo.scss";
 
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
+import "animate.css";
 
 const Repo = ({ repo }) => {
   const navigate = useNavigate();
@@ -12,14 +14,22 @@ const Repo = ({ repo }) => {
     return arr[arr?.length - 1];
   }
 
-  const goToCommit = (owner, repository) => {
+  const goToCommit = () => {
     navigate(`/details/${repo?.owner?.login}/${repoName()}/commits`)
   }
   return (
     <Fragment>
-      <div onClick={() => goToCommit()} className="repo">
-        <span className="fw-semi-bold">{repo?.full_name}</span>
-      </div>
+      <CSSTransition
+        classNames={{
+          enterActive: 'animate__animated animate__fadeIn',
+          exitActive: 'animate__animated animate__fadeOut',
+        }}
+        timeout={500}
+      >
+        <div onClick={() => goToCommit()} className="repo animate__animated animate__fadeIn">
+          <span className="fw-semi-bold">{repo?.full_name}</span>
+        </div>
+      </CSSTransition>
     </Fragment>
   );
 }

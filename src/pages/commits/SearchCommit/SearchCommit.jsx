@@ -7,6 +7,8 @@ import { SearchForm } from "../../../components/forms";
 import { Repo } from "../../../components/core";
 
 import { ServiceApi } from "../../../services";
+import { CSSTransition } from "react-transition-group";
+import "animate.css";
 
 const $api = new ServiceApi();
 
@@ -64,13 +66,31 @@ const SearchCommit = () => {
           </div>
 
           {/* TRENDING REPOS */}
-          {isLoading && <div className="fw-normal text-navy">Loading...</div>}
+          {isLoading &&
+            <CSSTransition
+              classNames={{
+                enterActive: 'animate__animated animate__fadeIn',
+                exitActive: 'animate__animated animate__fadeOut',
+              }}
+              timeout={500}
+            >
+              <div className="fw-normal text-navy animate__animated animate__fadeIn">Loading...</div>
+            </CSSTransition>
+          }
           {!isLoading &&
-            <div className="main__repo-wrapper">
-              <div className="main__repos">
-                {renderRepos()}
+            <CSSTransition
+              classNames={{
+                enterActive: 'animate__animated animate__fadeIn',
+                exitActive: 'animate__animated animate__fadeOut',
+              }}
+              timeout={500}
+            >
+              <div className="main__repo-wrapper animate__animated animate__fadeIn">
+                <div className="main__repos">
+                  {renderRepos()}
+                </div>
               </div>
-            </div>
+            </CSSTransition>
           }
         </main>
       </div>
